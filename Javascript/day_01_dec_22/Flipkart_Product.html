@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 350px;
+        height: 450px;
+      }
+      button {
+        padding: 15px 65px;
+        margin: 5px;
+        color: white;
+        font-weight: bolder;
+        border: none;
+        background-color: orange;
+        cursor: pointer;
+      }
+      #btn1 {
+        background-color: orange;
+      }
+      #btn2 {
+        background-color: orangered;
+      }
+    </style>
+    <script>
+      function goToCart() {
+        alert("Your Item is added to cart!!!");
+      }
+    </script>
+  </head>
+  <body>
+    <img
+      src="https://img.tatacliq.com/images/i10/437Wx649H/MP000000006514735_437Wx649H_202303211400181.jpeg"
+      alt=""
+    />
+    <div>
+      <button id="btn1" onclick="goToCart()">Go To Cart</button>
+      <button id="btn2">Buy Now</button>
+    </div>
+  </body>
+</html>
