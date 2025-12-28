@@ -1,0 +1,11 @@
+<script>
+  for (var i = 1; i <= 3; i++) {
+    console.log("inside for loop i:: ", i); // i should be accessible here
+  }
+  console.log("outside for loop i:: ", i); // i shouldn't be accessible here, but it is
+
+  for (let j = 1; j <= 3; j++) {
+    console.log("inside for loop j:: ", j); // j should be accessible here
+  }
+  console.log("outside for loop j:: ", j); // j shouldn't be accessible here, and it's not
+</script>

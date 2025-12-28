@@ -1,0 +1,22 @@
+<script>
+  // Var doesn't support block scope
+  function f1() {
+    var a = 10; // Function Scope
+
+    if (true) {
+      var b = 20; // scope of 'b' ideally should be block, but its not block
+      console.log("Block: ", a, b);
+    }
+    console.log("Function: ", a, b); // here b should not be accessible
+  }
+  f1();
+
+  function f2() {
+    if (true) {
+      let x = 10;
+      console.log("block ", x);
+    }
+    console.log("function ", x); // x is not defined
+  }
+  f2();
+</script>
