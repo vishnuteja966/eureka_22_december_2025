@@ -1,0 +1,26 @@
+<script>
+  // function declaration
+  add(2, 3); // yes- hoisting
+  function add(a, b) {
+    console.log(`sum is ${a + b}`);
+  }
+  add(10, 20);
+
+  // 2. function expression
+  // sub(3, 2);
+  let sub = function (a, b) {
+    console.log(`subtraction is ${a - b}`);
+  };
+  sub(20, 10);
+
+  // Self Invoked
+  (function (a, b) {
+    console.log(`mulitplication is ${a * b}`);
+  })(10, 20);
+
+  // Arrow Function
+  let div = (a, b) => {
+    console.log(`division is ${a / b}`);
+  };
+  div(20, 10);
+</script>

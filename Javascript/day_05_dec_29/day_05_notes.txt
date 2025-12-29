@@ -1,0 +1,38 @@
+functions
+=========
+1. Function Declaration (named function)
+2. Function Expression (anonymous function)
+3. Self Invoked
+4. Arrow Function (ES_6) 2015
+
+
+Function Declaration vs Function Expression
+============================================
+1. function declarations are named , function expressions are anonynous
+2. function declarations are hoisted, function expressions are not hoisted
+
+
+Self Invoked
+=============
+-Immediately Invoked Function Expression (IIFE)
+-these functions can be invoked only once
+
+
+Arrow Function
+==============
+-compact syntax
+-implicit return
+-no need to use function keyword
+
+
+Arrow Function Limitations
+===========================
+1. arrow functions should not be used as object methods.
+2. in arrow function , value of 'this' is static
+   dont use arrow function if we expect value of 'this' to be dynamic
+
+
+this
+====
+Regular Function : this = how/where the function is invoked
+Arrow Function  : this = where the arrow function is written (lexical scope)
