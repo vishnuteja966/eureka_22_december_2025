@@ -1,0 +1,18 @@
+<script>
+  function add(a, b) {
+    // regular
+    console.log(a + b);
+  }
+  add(10, 20);
+  // ===========================
+
+  function sum(a) {
+    return function (b) {
+      console.log(a + b);
+    };
+  }
+  let addTen = sum(10);
+  addTen(2); // 12
+  addTen(3); // 13
+  addTen(4); // 14
+</script>

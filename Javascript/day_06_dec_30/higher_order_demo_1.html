@@ -1,0 +1,10 @@
+<script>
+  function f1() { // f1 is higherorder
+    console.log("This is f1...");
+    return function() {
+      console.log("This is f2...");
+    };
+  }
+  let f2 = f1();
+  f2();
+</script>
