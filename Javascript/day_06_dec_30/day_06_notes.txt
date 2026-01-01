@@ -33,3 +33,7 @@ why/where closure is being used
 ===============================
 1. Encapsulation
 2. Function Factory
+
+
+Data Hiding : Hiding the data from other objects
+Encapsulation : data Hiding + iteracting with other obects using member functions

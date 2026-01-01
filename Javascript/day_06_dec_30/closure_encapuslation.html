@@ -1,4 +1,30 @@
 <script>
   let account = { accNo: 12345, accBal: 5000 }; // not encapsulated
   console.log(account.accNo, account.accBal); // read
+  account.accBal = -5000000; // write - yes
+  console.log(account.accNo, account.accBal); // read
+
+  function openAccount(initialBal) {
+    var accNo = 112233;
+    var accBal = initialBal;
+
+    return {
+      deposit: function (amtToDeposit) {
+        if (amtToDeposit < 0) {
+          alert("Sorry Boss!! , This amount cannt be deposited.");
+        } else {
+          accBal = accBal + amtToDeposit;
+        }
+      },
+      displayInfo: () => {
+        console.log(`Account No::${accNo} , Balance::${accBal}`);
+      },
+    };
+  }
+  let encapsulatedAccount = openAccount(5000);
+  console.log(encapsulatedAccount);
+  encapsulatedAccount.displayInfo();
+  encapsulatedAccount.deposit(-30000);
+  encapsulatedAccount.deposit(3000);
+  encapsulatedAccount.displayInfo();
 </script>
