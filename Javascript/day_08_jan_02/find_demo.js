@@ -8,3 +8,19 @@ let employees = [
 // display the first female employee in this list
 let first_female_emp = employees.find((emp) => emp.gender === 'female');
 console.log(first_female_emp)
+
+// display the index of first female employee in this list
+let first_female_emp_ind = employees.findIndex((emp) => emp.gender === 'female');
+console.log(first_female_emp_ind)
+
+// display the last female employee in this list
+let last_female_emp = employees.findLast((emp) => emp.gender === 'female');
+console.log(last_female_emp)
+
+// display the index of last female employee in this list
+let last_female_emp_ind = employees.findLastIndex((emp) => emp.gender === 'female');
+console.log(last_female_emp_ind)
+
+// display all the female employees in the list
+let all_female_emp = employees.filter((emp) => emp.gender === 'female');
+console.log(all_female_emp)
