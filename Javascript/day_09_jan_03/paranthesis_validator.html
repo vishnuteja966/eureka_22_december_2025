@@ -1,0 +1,27 @@
+<script>
+    function isValidParanthesis(str) {
+        let myMap = {  // object / map / dictionary
+            ')': '(',
+            '}': '{',
+            ']': '['
+        }
+        let myStack = [];
+
+        for (let char of str) {
+            let topMostChar = myStack[myStack.length - 1];
+
+            if (char == '(' || char == '{' || char == '[') {
+                myStack.push(char)
+            } else if (topMostChar == myMap[char]) {
+                myStack.pop();
+            } else {
+                return false;
+            }
+        }
+        return myStack.length ? false : true;
+    }
+
+    let inputStr = prompt('Enter paranthesis', '[{()}]');
+    let isValid = isValidParanthesis(inputStr);
+    console.log('is valid? ', isValid)
+</script>
