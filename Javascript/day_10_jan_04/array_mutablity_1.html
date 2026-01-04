@@ -1,0 +1,16 @@
+<script>
+    const arr = [10, 20, 30];
+    arr[0] = 15;   // update - yes
+    delete arr[1]; // delete - yes
+    arr.push(40);  // push - yes
+    console.log(arr); // [15, empty, 30, 40]
+    // Note: const doesnt make an array immutable
+
+    // how to achieve immutablity
+    let cars = ['Tata', 'Honda']
+    Object.freeze(cars); // cars array is frozen
+    cars[0] = 'Toyota';
+    delete cars[1];
+    // cars.push('Mahindra');
+    console.log(cars)
+</script>

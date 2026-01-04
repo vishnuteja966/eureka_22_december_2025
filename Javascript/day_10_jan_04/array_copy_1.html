@@ -1,0 +1,26 @@
+<script>
+    let arr1 = [10, 20];
+    let arr2 = arr1; // reference copy
+    arr1.push(30);
+    arr2.push(40);
+    console.log('arr1: ', arr1); // [10, 20, 30, 40]
+    console.log('arr2: ', arr2); // [10, 20, 30, 40]
+
+    // Shallow Copy (Copy by value)
+    // only outer/top elements are copied by value, nested arrays are copied by reference
+    let arr3 = [10, 20, [30, 31]];
+    let arr4 = [...arr3]; // shallow 
+    arr3.push(40, 50);
+    arr3[2].push(33, 34);
+    console.log('arr3: ', arr3);  // [10, 20, [30, 31,33,34],40,50]
+    console.log('arr4: ', arr4);  // [10, 20, [30, 31,33,34]]
+
+    // Deep Copy (Copy by value)
+    // everything gets copied by value(including nested arrays)
+    let arr5 = [10, 20, [30, 31]];
+    let arr6 = structuredClone(arr5); // deep copy
+    arr5.push(40, 50);
+    arr5[2].push(33, 34);
+    console.log('arr5: ', arr5);  // [10, 20, [30, 31,33,34],40,50]
+    console.log('arr6: ', arr6);  // [10, 20, [30, 31]]
+</script>

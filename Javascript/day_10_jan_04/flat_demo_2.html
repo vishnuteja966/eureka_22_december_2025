@@ -1,0 +1,17 @@
+<script>
+    let arr = [10, 20, [30, 40, [50, 60, [70, 80, [90, 100]]]]];
+
+    let resultArr = [];
+    function flatten(arr) {
+        for (ele of arr) {
+            if (Array.isArray(ele)) {
+                flatten(ele);
+            } else {
+                resultArr.push(ele);
+            }
+        }
+
+    }
+    flatten(arr)
+    console.log(resultArr);
+</script>

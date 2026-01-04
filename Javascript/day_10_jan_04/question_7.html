@@ -1,0 +1,18 @@
+<script>
+    // add Dept info for each employee
+    let employees = [
+        { eId: 101, name: "sanjay", sal: 5000, gender: "male" },
+        { eId: 104, name: "reena", sal: 8000, gender: "female" }
+    ]
+    let departments = [
+        { eId: 101, dept: "sales" },
+        { eId: 104, dept: "marketing" }
+    ]
+
+    let result = employees.map(emp => {
+        // find the dept whose eId matches with emp's eId
+        let deptObj = departments.find(dept => dept.eId === emp.eId);
+        return { ...emp, dept: deptObj.dept }
+    });
+    console.log(result)
+</script>
