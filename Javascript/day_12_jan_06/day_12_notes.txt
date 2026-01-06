@@ -1,0 +1,32 @@
+EventLoop
+=========
+Javascript Runtime Components:
+Memory Heap : Area where variables are stored physically
+CallStack : Where Functions Execute (LIFO)
+Event Loop : keeps an eye on callstack, helps to execute tasks and microtasks queue functions
+
+
+CallBacks
+=========
+-A callback is a function passed as an argument to another function to be executed later,
+after an async task finishes.
+-callbacks allow javascript to keep running while waiting for results
+
+
+
+
+Promise
+=======
+-A Promise is an object whose value might not be available now, but will be available later some time
+-Async Operations
+-1. pending   2. fulfilled   3. rejected
+-To get Data from promise:  1.then()   2. async await
+
+
+
+Async-await
+============
+- async/await syntactic sugar over promise
+- async makes a function return a promise
+- await pause the execution inside async function and will go to the next line 
+  only when promise is resolved/rejected

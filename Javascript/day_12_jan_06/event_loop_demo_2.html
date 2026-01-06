@@ -1,0 +1,11 @@
+<script>
+    console.log('Normal Code Starts...')
+    function f1() {
+        console.log('I am f1....')
+    }
+    setTimeout(f1, 5000);
+    console.log('Normal Code Ends...')
+
+    // if a function is waiting in callback Queue, even if callstack is free, 
+    // that function gets called only when it's time elapses
+</script>
