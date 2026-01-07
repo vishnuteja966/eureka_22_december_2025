@@ -1,0 +1,33 @@
+let user = {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+            "lat": "-37.3159",
+            "lng": "81.1496"
+        }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+    }
+}
+let a = user.name;
+let b = user.email;
+let c = user.phone;
+let d = user.address.street;
+let e = user.address.city;
+console.log(a, b, c, d, e);
+
+// ES_6 destructuring
+let { name, email, phone, address: { street, city } } = user;
+console.log(name, email, phone, street, city)
