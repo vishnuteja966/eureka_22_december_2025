@@ -1,0 +1,23 @@
+<p>employee-subject works!</p>
+<h2>Employee Subject</h2>
+
+<input #name placeholder="Name" />
+<input #role placeholder="Role" />
+<button (click)="addEmployee(name.value, role.value); name.value=''; role.value=''">
+  Add Employee
+</button>
+
+<button (click)="clearAll()">Clear All</button>
+
+<hr />
+
+@for (emp of employees; track emp.id) {
+  <div>
+    {{ emp.id }} - {{ emp.name }} ({{ emp.role }})
+    <button (click)="deleteEmployee(emp.id)">Delete</button>
+  </div>
+}
+
+@if (employees.length === 0) {
+  <p>No employees available</p>
+}

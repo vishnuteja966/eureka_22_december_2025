@@ -1,0 +1,208 @@
+<h3 class="text-center" style = "color: red;">Let's Learn Data Binding</h3>
+
+<div class="border border-2 rounded-2 p-2 m-2">
+  <h4>Interpolation & Property Binding</h4>
+
+  <div>User Name is: {{userName}} </div>
+  <div>User Name is: <span [innerText]="userName"></span></div>
+  <div>User Name is: <span bind-innerText="userName"></span></div>
+
+  <img src="{{img_url}}" alt="" width="300" height="300" />
+  <img [src]="img_url" alt="" width="300" height="300" />
+  <img bind-src="img_url" alt="" width="300" height="300" />
+
+  <p class="mt-2">1 way: <input type="text" value="{{userName}}" /></p>
+  <p class="mt-2">1 way: <input type="text" [value]="userName" /></p>
+  <p class="mt-2">1 way: <input type="text" bind-value="userName" /></p>
+  <p class="mt-2">2 way: <input type="text" [(ngModel)]="userName" /></p>
+
+  <div>
+    <button class="btn btn-primary" disabled="{{flag}}">Click Me</button>
+    <button class="btn btn-primary mx-2" [disabled]="flag">Click Me</button>
+    <button class="btn btn-primary" bind-disabled="flag">Click Me</button>
+    <div>Flag:: {{flag}}</div>
+    <button class="btn btn-primary mx-2" (click)="toggleFlag()">Toggle Flag</button>
+    <button class="btn btn-primary mx-2" (click)="toggleFlag()">Toggle Flag</button>
+  </div>
+
+</div>
+<div class="border border-2 rounded-2 p-2 m-2">
+  <h4>Attribute Binding:</h4>
+  <textarea maxLength="{{max_length}}"></textarea>
+  <textarea [maxLength]="max_length" class="mx-2"></textarea>
+  <textarea [attr.maxlength]="max_length" class="mx-2"></textarea>
+  <!-- maxLength is Property, maxlength is attribute -->
+</div>
+
+<!-- 1.⁠ ⁠Have a paragraph and a toggle button; on clicking the button, control the visibility (Show / Hide) of the paragraph.
+2.⁠ ⁠Create a textarea with maxLength = 100; as the user keeps typing, display the updated remaining characters.
+3.⁠ ⁠Create a textarea; as the user keeps typing, count and display how many words and how many characters are typed.
+4.⁠ ⁠Create a dropdown with state names; when the user changes the dropdown value, print the selected value in a div.
+5.⁠ ⁠create a input box, toggle the type of that input box to (text/password) - on button click. -->
+
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4> Visibility Toggle</h4>
+
+  <button class="btn btn-primary" (click)="togglePara()">
+    {{viewPara ? 'Hide' : 'Show'}} Toggle Paragraph
+  </button>
+    <p [hidden] = "!viewPara"> Not visible when you click the button</p>
+</div>
+
+<div class="border border-2 p-2 m-2 rounded-2">
+
+  <h4>Task 2: Remaining Characters (max 100)</h4>
+
+  <textarea
+    class="form-control"
+    rows="4"
+    [(ngModel)]="textValue1"
+    [attr.maxlength]="maxLimit1"
+    (input)="updateTask2()"
+    placeholder="Type here (max 100 chars)..."
+  ></textarea>
+
+  <div class="mt-2">
+    Remaining characters: <b>{{ remaining1 }}</b>
+  </div>
+</div>
+
+
+<!-- TASK 3 -->
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Task 3: Word Count & Character Count (No max length)</h4>
+
+  <textarea class="form-control" rows="4" [(ngModel)]="textValue2" (input)="updateTask3()"placeholder="Type here (no limit)..."></textarea>
+
+  <div class="mt-2">
+    Characters typed: <b>{{ charCount1 }}</b>
+  </div>
+
+  <div>
+    Words typed: <b>{{ wordCount1 }}</b>
+  </div>
+</div>
+
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Dropdown</h4>
+
+  <select class="form-select" [(ngModel)]="selectedState">
+  <option value="">-- Select State --</option>
+  <option value="New Jersey">New Jersey</option>
+  <option value="New York">New York</option>
+  <option value="California">California</option>
+  <option value="Texas">Texas</option>
+  <option value="Florida">Florida</option>
+</select>
+
+<div class="mt-2">
+  Selected State: <b>{{ selectedState }}</b>
+</div>
+</div>
+
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Toggle Input Type (Text / Password)</h4>
+
+  <input class="form-control" [type]="inputType" />
+
+  <button class="btn btn-warning mt-2" (click)="toggleInputType()">
+    Toggle Input Type
+  </button>
+
+  <div class="mt-2">
+    Current Type: <b>{{ inputType }}</b>
+  </div>
+</div>
+
+<!-- 6. Create a counter example with three controls: Increment, Decrement, and Reset. -->
+
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Counter Example</h4>
+
+  <div class="mb-2">
+    Current Count: <b>{{ counter }}</b>
+  </div>
+
+  <button class="btn btn-success me-2" (click)="increment()">Increment</button>
+  <button class="btn btn-danger me-2" (click)="decrement()">Decrement</button>
+  <button class="btn btn-secondary" (click)="reset()">Reset</button>
+</div>
+
+<!-- 7. Create a temperature converter to convert Celsius to Fahrenheit.
+8. Create two input boxes and a dropdown (+ , - , * , /) and perform arithmetic operations based on the selected operator.
+9. Create a button that increases font size and another button that decreases font size for a paragraph.
+10. Create a dropdown with colors and change the background color of a div based on selection. -->
+
+<!-- TASK 7 -->
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Temperature Converter (Celsius to Fahrenheit)</h4>
+  <input
+    class="form-control"
+    type="number"
+    [(ngModel)]="celsius"
+    (input)="convertToFahrenheit()"
+    placeholder="Enter temperature in Celsius"
+  />
+
+  <div class="mt-2">
+    Temperature in Fahrenheit: <b>{{ fahrenheit }}</b>
+  </div>
+</div>
+
+<!-- TASK 8 -->
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Simple Calculator</h4>
+  <input
+    class="form-control mb-2"
+    type="number"
+    [(ngModel)]="num1"
+    placeholder="Enter first number"
+  />
+  <input
+    class="form-control mb-2"
+    type="number"
+    [(ngModel)]="num2"
+    placeholder="Enter second number"
+  />
+  <select class="form-select mb-2" [(ngModel)]="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <button class="btn btn-primary" (click)="calculate()">Calculate</button>
+  <div class="mt-2">
+    Result: <b>{{ result }}</b>
+  </div>
+</div>
+
+<!-- TASK 9 -->
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Font Size Adjuster</h4>
+  <p [ngStyle]="{ 'font-size.px': fontSize }">
+    This is a sample paragraph. Adjust its font size using the buttons below.
+  </p>
+  <button class="btn btn-success me-2" (click)="increaseFontSize()">
+    Increase Font Size
+  </button>
+  <button class="btn btn-danger" (click)="decreaseFontSize()">
+    Decrease Font Size
+  </button>
+</div>
+<!-- TASK 10 -->
+<div class="border border-2 p-2 m-2 rounded-2">
+  <h4>Background Color Changer</h4>
+  <select class="form-select" [(ngModel)]="bgColor">
+    <option value="">-- Select Color --</option>
+    <option value="lightblue">Light Blue</option>
+    <option value="lightgreen">Light Green</option>
+    <option value="lightpink">Light Pink</option>
+    <option value="lightyellow">Light Yellow</option>
+    <option value="lightgray">Light Gray</option>
+  </select>
+  <div
+    class="mt-2 p-4" [ngStyle] = "{ 'background-color': bgColor || selectedColor }"
+  >
+  This div's back ground color changes based on your selection.
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="card p-3 mb-3">
+  <h5>Add Employee</h5>
+
+  <div class="row g-2">
+    <div class="col">
+      <input class="form-control" placeholder="Name" [(ngModel)]="newEmp.name">
+    </div>
+    <div class="col">
+      <input class="form-control" placeholder="Email" [(ngModel)]="newEmp.email">
+    </div>
+    <div class="col">
+      <input class="form-control" placeholder="Phone" [(ngModel)]="newEmp.phone">
+    </div>
+    <div class="col">
+      <input class="form-control" placeholder="Dept" [(ngModel)]="newEmp.dept">
+    </div>
+    <div class="col">
+      <input class="form-control" placeholder="City" [(ngModel)]="newEmp.city">
+    </div>
+    <div class="col">
+      <button class="btn btn-success w-100" (click)="add.emit()">Add</button>
+    </div>
+  </div>
+</div>

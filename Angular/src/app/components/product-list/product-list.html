@@ -1,0 +1,31 @@
+<h3 class="text-center">Product List</h3>
+
+<div class="container">
+   <div class="row">
+    <div class="col-sm-6 offset-3">
+      <!-- <input type="search" class="form-control" placeholder="Search..." appCharOnly /> -->
+      <!-- <input type="search" class="form-control" placeholder="Search..." appAlphaNumeric  /> -->
+      <input type="search" class="form-control" placeholder="Search..." appDisableCopyPaste  />
+    </div>
+  </div>
+  <div class="row">
+    @for (product of productArr; track $index) {
+    <div class="col-sm-3">
+      <div class="card text-center">
+        <img src="{{product.image}}" class="card-img-top" alt="..." height="250px">
+        
+        <div class="card-body" appZoomin>
+          <h5 class="card-title">{{product.category}}</h5>
+          <p class="card-text text-truncate">{{product.title}}</p>
+          <p class="card-text text-truncate">{{product.description}}</p>
+          <p class="card-text">{{product.price}}</p>
+          <p class="card-text">{{product.rating.rate}}</p>
+          <button class="btn btn-primary mx-1" [routerLink]="['/productdetails']"
+            [queryParams]="{id:product.id,name:product.title,price:product.price}">Details</button>
+      
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

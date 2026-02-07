@@ -1,0 +1,68 @@
+<h3 class="text-center">Signal - Todo Assignment</h3>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Todo Summary (Computed Signals)</h4>
+
+  <div>Total Todos: {{ todos().length }}</div>
+  <div>Completed Todos: {{ completedToDos().length }}</div>
+  <div>Remaining Todos: {{ remainingToDos().length }}</div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Add New Todo</h4>
+
+  <div class="d-flex gap-2 align-items-center">
+    <input class="form-control" placeholder="Enter todo..." [(ngModel)]="newTitle" />
+    <button class="btn btn-primary" (click)="addTodo()">Add</button>
+  </div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h3 class="text-center">Todo List</h3>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Todo</th>
+        <th>Status</th>
+        <th>Toggle</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (t of todos(); track t.id) {
+        <tr>
+          <td>{{ t.id }}</td>
+
+          <td>
+            <span [style.text-decoration]="t.isCompleted ? 'line-through' : 'none'">
+              {{ t.title }}
+            </span>
+          </td>
+
+          <td>
+            {{ t.isCompleted ? 'Completed' : 'Remaining' }}
+          </td>
+
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="toggleTodo(t.id)">
+              {{ t.isCompleted ? 'Mark Remaining' : 'Mark Completed' }}
+            </button>
+          </td>
+
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteTodo(t.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center">No Todos to Show</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
