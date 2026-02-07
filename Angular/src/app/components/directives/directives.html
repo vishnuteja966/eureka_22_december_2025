@@ -1,0 +1,335 @@
+<h3 class="text-center">Let's Learn Directives</h3>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <pre>
+  1. Structural Directives :
+     Directive which changes the layout/structure of the DOM.
+
+  2. Attribute Directives : ([ngStyle],[ngClass])
+     Directive which changes behaviour/appearance of the DOM element.
+  </pre>
+</div>
+
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>use of let:</h4>
+  @let greeting = 'Hello, ' + user.firstName;
+  @let fullName = `${user.firstName} ${user.lastName}`;
+
+  <div>{{greeting}}</div>
+  <div>{{fullName}}</div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>if-else Before angular 17</h4>
+  <input type="number" [(ngModel)]="num">
+
+  <div *ngIf="num%2 == 0;else oddBlock">
+    {{num}} is Even Number
+  </div>
+  <ng-template #oddBlock>
+    <div>{{num}} is Odd Number</div>
+  </ng-template>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>if-else After angular 17</h4>
+  <input type="number" [(ngModel)]="num">
+
+  @if(num%2 == 0){
+  <div>{{num}} is Even Number</div>
+  }@else {
+  <div>{{num}} is Odd Number</div>
+  }
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>if vs hidden</h4>
+  <input type="number" [(ngModel)]="num">
+  <br />
+
+  Using If::
+  @if(num%2 == 0){
+  <div>{{num}} is Even Number</div>
+  }@else {
+  <div>{{num}} is Odd Number</div>
+  }
+
+  Using hidden::
+  <div [hidden]="num%2!=0">{{num}} is Even Number</div>
+  <div [hidden]="num%2==0">{{num}} is Odd Number</div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Switch Case::</h4>
+  <input type="number" [(ngModel)]="num">
+  @switch (num) {
+  @case (1) { <h3>Monday</h3> }
+  @case (2) { <h3>Tuesday</h3> }
+  @case (3) { <h3>Wednesday</h3> }
+  @case (4) { <h3>Thursday</h3> }
+  @case (5) { <h3>Friday</h3> }
+  @case (6) { <h3>Saturday</h3> }
+  @case (7) { <h3>Sunday</h3> }
+  @default { <h3>Not a Valid number</h3> }
+  }
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Car List::</h4>
+  <ul>
+    @for (car of cars; track $index) {
+    <li>{{car}}</li>
+    }@empty {
+    <div>No Item</div>
+    }
+  </ul>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Car Dropdown::</h4>
+  <select [(ngModel)]="selectedCar">
+    @for (car of cars; track $index) {
+    <option>{{car}}</option>
+    }@empty {
+    <div>No Item</div>
+    }
+  </select>
+  <h4>Selected Car: {{selectedCar}}</h4>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>Local variables inside For Loop::</h4>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Sl #</th>
+        <th>eId</th>
+        <th>name</th>
+        <th>salary</th>
+        <th>gender</th>
+        <th>isFirst?</th>
+        <th>isLast?</th>
+        <th>isEven?</th>
+        <th>isOdd?</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (emp of employees; track emp.eId) {
+      <tr>
+        <td>{{ $index+1 }}</td>
+        <td>{{emp.eId}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.sal}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{$first}}</td>
+        <td>{{$last}}</td>
+        <td>{{$even}}</td>
+        <td>{{$odd}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>ngStyle is used to apply some style conditionally</h4>
+  <input type="number" [(ngModel)]="num">
+  <div [style.color]="num%2==0?'green':'red'">Apply Green/Red color conditionally</div>
+  <div [style.fontSize.px]="num%2==0?'24':'16'">Apply 24/16px font size conditionally</div>
+  <div [ngStyle]=" num%2==0 ? myStyle1 : myStyle2 ">use ngStyle to apply multiple css property conditionally</div>
+  <div [ngStyle]="myFunction1()">use ngStyle to apply multiple css property conditionally</div>
+</div>
+
+<div class="border border-3 rounded-3 p-3 m-3">
+  <h4>ngClass is used to apply some css classes conditionally</h4>
+  <input type="number" [(ngModel)]="num">
+  <div [class.active]="isActive">Active class will be added to this div only if isActive flag is true</div>
+  <button class="btn btn-primary" (click)="isActive=!isActive">Toggle isActive - {{isActive}}</button>
+  <button [ngClass]="['btn', 'mx-2' ,num%2==0 ? 'btn-success' : 'btn-danger']">Click Me</button>
+</div>
+
+
+<!-- Directive Assignment:
+====================
+1.⁠ ⁠Create an array of task objects, and display them using @for
+   Every Element Should have a checkbox, When a checkbox is clicked, toggle completion status(true/false)
+   for completed tasks show them as striked-out
+   add a dropdown with 3 values 'All','Completed','Pending' , based on the value selected, show the tasks
+
+	tasks = [
+	  { id: 1, title: 'Complete Angular assignment', completed: false },
+	  { id: 2, title: 'Review pull requests', completed: true },
+	  { id: 3, title: 'Prepare project report', completed: false },
+	  { id: 4, title: 'Attend team meeting', completed: true },
+	  { id: 5, title: 'Update documentation', completed: false }, 
+	]; -->
+<div class="border border-2 p-3 m-2 rounded-2">
+  <h4>Task List</h4>
+
+  <label class="me-2">Filter:</label>
+  <select class="form-select w-auto d-inline-block"
+          [(ngModel)]="filterStatus"
+          (change)="onFilterChange()">
+    <option value="All">All</option>
+    <option value="Completed">Completed</option>
+    <option value="Pending">Pending</option>
+  </select>
+
+  <hr />
+
+  @for (t of filteredTasks; track t.id) {
+    <div class="d-flex align-items-center mb-2">
+      <input type="checkbox"
+             class="form-check-input me-2"
+             [checked]="t.completed"
+             (change)="toggleTask(t)" />
+
+      <span [style.textDecoration]="t.completed ? 'line-through' : 'none'">
+        {{ t.title }}
+      </span>
+    </div>
+  } @empty {
+    <p class="text-danger">No tasks found.</p>
+  }
+</div>
+
+ 
+<!-- 2.⁠ ⁠Create an array of products (https://fakestoreapi.com/products)
+	Display the products in card format
+	Show a dropdown for categories.
+	When a category is selected, filter products.
+	Use @empty when no products match. -->
+
+<div class="border border-2 p-3 m-2 rounded-2">
+  <h4>Products</h4>
+
+    <label>Category:</label>
+    <select [(ngModel)]="selectedCategory">
+    @for (cat of categories; track cat) {
+        <option [value]="cat">{{ cat }}</option>
+    }
+    </select>
+
+    <div class="grid">
+    @for (p of getFilteredProducts(); track p.id) {
+        <div class="card">
+        <img [src]="p.image" [alt]="p.title" />
+        <h3>{{ p.title }}</h3>
+        <p class="category">{{ p.category }}</p>
+        <p class="price">$ {{ p.price }}</p>
+        <p class="rating">Rating: {{ p.rating.rate }} </p>
+        <p class="rating">Stock Available: {{p.rating.count}}</p>
+        <label><input type="checkbox" [(ngModel)]="p.showDesc" />Show Description</label>
+        <p [hidden]="!p.showDesc" style="background: #f9fbfc; padding: 10px;"> {{ p.description }} </p>
+
+        </div>
+
+    } @empty {
+        <div class="empty">
+        No products match this category.
+        </div>
+    }
+
+    </div>
+</div>
+
+<div class="border border-2 p-3 m-2 rounded-2">
+  <h4>Shopping Cart</h4>
+
+  @for (item of cartItems; track item.id) {
+
+    <div class="d-flex justify-content-between align-items-center border p-2 mb-2">
+
+      <div>
+        <b>{{ item.name }}</b><br />
+        ${{ item.price }}
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button class="btn btn-danger btn-sm me-2"
+                (click)="decreaseQty(item)">−</button>
+
+        <span>{{ item.qty }}</span>
+
+        <button class="btn btn-success btn-sm ms-2"
+                (click)="increaseQty(item)">+</button>
+      </div>
+
+      <div>
+        ${{ item.price * item.qty }}
+      </div>
+
+    </div>
+
+  } @empty {
+    <p>No items in cart</p>
+  }
+
+  <hr />
+
+  <p>Total</p>
+
+  <h5 class="mt-2">
+    Total Price: ${{ totalPrice }}
+  </h5>
+</div>
+
+<div class="border border-2 p-3 m-2 rounded-2">
+  <h4>Employees</h4>
+
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Salary</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (emp of employees1; track emp.id) {
+
+        <!-- d) row background based on role -->
+        <tr
+          [ngStyle]="{
+            'background-color':
+              emp.role === 'Manager' ? 'lightyellow' :
+              emp.role === 'Developer' ? 'lightblue' :
+              emp.role === 'Tester' ? 'lightpink' : 'white'
+          }"
+        >
+          <td>{{ emp.id }}</td>
+
+          <td [ngClass]="{ 'inactive': emp.status === 'Inactive' }">
+            {{ emp.name }}
+          </td>
+
+          <!-- c) Manager role only => bold + blue -->
+          <td [ngClass]="{ 'managerText': emp.role === 'Manager' }">
+            {{ emp.role }}
+          </td>
+
+          <td [ngStyle]="{ 'color': emp.salary > 50000 ? 'green' : 'red' }">
+            <span class="badge" [ngClass]="getSalaryBadgeClass(emp.salary)">
+              {{ emp.salary }}
+            </span>
+          </td>
+
+          <td [ngClass]="{ 'inactive': emp.status === 'Inactive' }">
+            {{ emp.status }}
+          </td>
+        </tr>
+
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center text-danger">No employees found</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

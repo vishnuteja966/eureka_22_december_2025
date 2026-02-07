@@ -1,0 +1,36 @@
+<h3 class="text-center">User List</h3>
+
+<div>
+  <button class="btn btn-primary" (click)="openSweetAlert()">Open SweetAlert</button>
+  <button class="btn btn-primary mx-2" (click)="openSnackBar()">Open SnackBar</button>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    @for (user of userArr  | paginate: { itemsPerPage: 4, currentPage: p}; track $index) {
+    <div class="col-sm-3">
+      <div class="card text-center">
+        <img src="https://e7.pngegg.com/pngimages/428/137/png-clipart-male-avatar-young-user-icon-icons-logos-emojis-users.png" class="card-img-top" alt="..." height="250px">
+        <div class="card-body">
+          <h5 class="card-title">{{user.username}}</h5>
+          <p class="card-text text-truncate">{{user.name}}</p>
+          <p class="card-text text-truncate">{{user.email}}</p>
+          <p class="card-text">{{user.address.city}}</p>
+          <p class="card-text">
+            <fa-icon [icon]="faPhone"></fa-icon>
+            {{user.phone}}
+          </p>
+          <button class="btn btn-primary" [routerLink]="['/userdetails', user.id]">
+        View Details</button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="row mt-2">
+    <div class="col-sm-4 offset-4">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

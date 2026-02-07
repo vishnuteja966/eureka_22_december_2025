@@ -1,0 +1,24 @@
+<div class="container text-center border border-2 rounded-2 mt-2">
+  <div>Template Reference variable</div>
+  <input #num1 />
+  <input #num2 />
+  <button (click)="addition(num1.value , num2.value)">Add</button>
+
+  <div class="row">
+    <h4>This is Parent Component</h4>
+    <div>
+      My Own Data a: {{a}}
+      <input type="number" [(ngModel)]="a" #myBox1 />
+    </div>
+    <div>child2's data name: {{child2.userName}}</div>
+    <div>child2's data CourseName: {{parentCourseName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 border border-2 rounded-2 my-2">
+      <app-child1-demo [a]="a" [userName]="child2.userName"></app-child1-demo>
+    </div>
+    <div class="col-sm-6 border border-2 rounded-2 my-2">
+      <app-child2-demo [achild2]="a" #child2 (courseEvent)="receiveDataFromChild($event)"></app-child2-demo>
+    </div>
+  </div>
+</div>

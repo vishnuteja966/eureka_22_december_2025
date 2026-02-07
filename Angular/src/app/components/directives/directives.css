@@ -1,0 +1,9 @@
+.managerText {
+  font-weight: bold;
+  color: blue;
+}
+
+.inactive {
+  opacity: 0.6;
+  text-decoration: line-through;
+}

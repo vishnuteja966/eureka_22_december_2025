@@ -1,0 +1,40 @@
+<table class="table table-bordered text-center">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Dept</th>
+      <th>City</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for(emp of employees; track emp.id) {
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>
+          <fa-icon [icon]="faStar" class="text-warning me-1"></fa-icon>
+          {{ emp.name }}
+        </td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.phone }}</td>
+        <td>{{ emp.dept }}</td>
+        <td>{{ emp.city }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2"
+                  (click)="view.emit(emp)">
+            <fa-icon [icon]="faEye"></fa-icon>
+          </button>
+
+          <button class="btn btn-danger btn-sm"
+                  (click)="del.emit(emp)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

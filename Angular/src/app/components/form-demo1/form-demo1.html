@@ -1,0 +1,18 @@
+<h3 class="text-center">Let's Learn Angular forms</h3>
+<div class = "border border-2 rounded-3 m-2 p-2">
+    <form name='myForm'>
+    Name:
+    <input name='uname' [(ngModel)]='name' required /><br><br>
+    Age:
+    <input name='uage' [(ngModel)]='age' />
+    </form>
+
+    <style>
+        input.ng-invalid{
+            border: 3px solid red;
+        }
+        input.ng-valid{
+            border: 3px solid green;
+        }
+    </style>
+</div>

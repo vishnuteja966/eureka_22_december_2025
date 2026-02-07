@@ -1,0 +1,27 @@
+<h3 class="text-center">Tic Tac Toe</h3>
+
+<div class="text-center my-2" *ngIf="!winner">
+  Current Player: <b>{{ currentPlayer }}</b>
+</div>
+
+<div class="board mx-auto">
+  @for (row of board; let rowIndex = $index; track rowIndex) {
+    <div class="d-flex justify-content-center">
+      @for (cell of row; let colIndex = $index; track colIndex) {
+        <button class="cell btn btn-light" (click)="makeMove(rowIndex, colIndex)">
+          {{cell}}
+        </button>
+      }
+    </div>
+  }
+</div>
+
+@if (winner) {
+  <div class="text-center mt-3 text-success">
+    Winner: <b>{{ winner }}</b>
+  </div>
+}
+
+<div class="text-center mt-3">
+  <button class="btn btn-dark" (click)="reset()">Reset</button>
+</div>
